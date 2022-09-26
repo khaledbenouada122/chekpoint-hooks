@@ -3,7 +3,8 @@ import {Card, ListGroup}from 'react-bootstrap';
 import {Start} from './Start'
 import ReactDOM from 'react-dom';
 import StarRatingComponent from 'react-star-rating-component'
-
+import Description from './Description';
+import {Link} from "react-router-dom"
 
 const Cardes = ({elm}) => {
   return (
@@ -14,12 +15,16 @@ const Cardes = ({elm}) => {
         <Card.Title style={{color:"black"}}>{elm.title}</Card.Title>
         <Card.Text style={{color:"black"}}>{elm.description} </Card.Text>
         <Card.Text >
+          <Link to={`/Description/${elm.id}`}>description</Link>
         <StarRatingComponent
         name="Start"/* name of the radio input, it is required */
          value={elm.rating} /* number of selected icon (`0` - none, `1` - first) */>
         </StarRatingComponent>
+      
        
-          </Card.Text>      
+          </Card.Text>  
+          <div>
+          </div>  
        
      
          

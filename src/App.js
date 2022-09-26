@@ -2,9 +2,16 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
+
 import ListContact from './componenet/ListContact';
 import Searchs from './componenet/Searchs';
 import ADDcontact from './componenet/ADDcontact';
+import { Route, Routes } from 'react-router-dom';
+import Cardes from './componenet/Cardes';
+import { Button } from 'react-bootstrap';
+import Description from './componenet/Description';
+import Des from './componenet/Des';
+
 
 
 
@@ -19,6 +26,8 @@ function App() {
     description:" The short tells the story of Pari, a 14-year-old girl who dreams of becoming a pilot while growing up in a society that doesn't allow her to dream",
     posteURL:"https://i.egycdn.com/pic/WmFwZndlY21ZcFlFbW1tWWpFY21URXZjbG1ibVRFbXo.jpg",
     rating: " 5",
+    
+  
    
 
   },
@@ -59,14 +68,29 @@ const handleADDcontact=(val)=>{
 
     <div className="App">
       <header className='App-header'>
-     
       <Searchs HandleFilter={HandleFilter} ></Searchs>
-     
-      <ListContact list={contactList.filter(elm=>elm.title.toUpperCase().includes(Filter.toUpperCase()))} ></ListContact>
-      <ADDcontact handleADDcontact={handleADDcontact}></ADDcontact>
-     
-  
+      <a href='Movie'>Movie</a>
+  <Routes>
+
+        <Route path='/Movie' element={<Description/>}/>
+     <Route path="/" element={<>
     
+        <ListContact list={contactList.filter(elm=>elm.title.toUpperCase().includes(Filter.toUpperCase()))} ></ListContact>
+     <ADDcontact handleADDcontact={handleADDcontact}></ADDcontact>
+     </>}/>
+
+     
+      
+
+
+        <Route path='Description/:movieid' element={<Description contactList={contactList}/>}/>
+           
+            
+        </Routes>
+          
+    
+     
+      
       
       </header>
    
